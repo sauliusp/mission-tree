@@ -1,0 +1,23 @@
+$block-bcg: url('../images/container-test.png') center center no-repeat;
+$block-w: 250px;
+$block-h: 89px;
+$gap-between-blocks: 20px;
+
+.canvas {
+	display: table;
+}
+
+.column {
+	display: table-cell;
+	padding: 0 $block-w - 220px;
+}
+
+.mission-block {
+	background: $block-bcg;
+	width: $block-w;
+	height: $block-h;
+
+	& + .mission-block {
+		margin-top: $gap-between-blocks; 
+	}
+}
