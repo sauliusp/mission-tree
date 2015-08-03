@@ -1,8 +1,18 @@
+/*blocks*/
+
+
+
+
+/*tree*/
 $block-bcg: url('../images/container-test.png') center center no-repeat;
 $block-w: 250px;
 $block-h: 89px;
-$gap-between-blocks: 20px;
+$gap-between-blocks: 20px;/*end of tree*/
 
+
+
+
+/*tree*/
 .canvas {
 	display: table;
 }
@@ -16,8 +26,19 @@ $gap-between-blocks: 20px;
 	background: $block-bcg;
 	width: $block-w;
 	height: $block-h;
+	position: relative;
 
 	& + .mission-block {
 		margin-top: $gap-between-blocks; 
 	}
-}
+
+	&.one {
+		&:after {
+			content:"";
+			position: absolute;
+			width: 10px;
+			height: 10px;
+			background-color: red;
+		};
+	}
+}/*end of tree*/
