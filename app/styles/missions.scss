@@ -1,20 +1,49 @@
-/*blocks*/
+/*BLOCKS*/
+$line: 2px solid red;
+
+/*lines*/
+$mid-w: 64px;
+$mid-l:249px;
+$mid-t:43px;
+
+$top-w: 90px;
+$top-l:224px;
+$top-t:-6px;
+$top-transform:rotate(-8deg);
+
+$bot-w: 90px;
+$bot-l:224px;
+$bot-t:93px;
+$bot-transform:rotate(8deg);
+
+$threeTop-w: 112px;
+$threeTop-l:213px;
+$threeTop-t:-32px;
+$threeTop-transform:rotate(-36deg);
+
+$threeBot-w: 112px;
+$threeBot-l:213px;
+$threeBot-t:120px;
+$threeBot-transform:rotate(36deg);
 
 
 
 
-/*tree*/
+/*TREE*/
 $block-bcg: url('../images/container-test.png') center center no-repeat;
 $block-w: 250px;
 $block-h: 89px;
-$gap-between-blocks: 20px;/*end of tree*/
+$gap-between-blocks: 20px;
+/*end of TREE*/
 
 
 
-
-/*tree*/
 .canvas {
 	display: table;
+
+	.mission-block + .mission-block {
+		margin-top: $gap-between-blocks; 
+	}
 }
 
 .column {
@@ -28,17 +57,122 @@ $gap-between-blocks: 20px;/*end of tree*/
 	height: $block-h;
 	position: relative;
 
-	& + .mission-block {
-		margin-top: $gap-between-blocks; 
+	&__dummy {
+		display: block;
+		position: relative;
+		width: 100%;
+		height: 100%;
+
+		&:before {
+			content:"";
+			position: absolute;
+			border-top: $line;
+			width: $top-w;
+			left:$top-l; 
+			top: $top-t;
+			transform: $top-transform;
+		};
+
+		&:after {
+			content:"";
+			position: absolute;
+			border-top: $line;
+			width: $bot-w;
+			left:$bot-l; 
+			top: $bot-t;
+			transform: $bot-transform;
+		};
+
+		&.three {
+			&:before {
+				content:"";
+				width: $threeTop-w;
+				left:$threeTop-l; 
+				top: $threeTop-t;
+				transform: $threeTop-transform;
+			};
+			&:after {
+				content:"";
+				width: $threeBot-w;
+				left:$threeBot-l; 
+				top: $threeBot-t;
+				transform: $threeBot-transform;
+			};
+		}
 	}
 
 	&.one {
 		&:after {
 			content:"";
 			position: absolute;
-			width: 10px;
-			height: 10px;
-			background-color: red;
+			border-top: $line;
+			width: $mid-w;
+			left:$mid-l; 
+			top: $mid-t;
 		};
 	}
-}/*end of tree*/
+}
+
+.block-set {
+	position: relative;
+	width: 562px;
+
+	& + .block-set {
+		margin-top: $gap-between-blocks;
+	}
+
+	&.one {
+		height: 89px;
+		.mission-block {
+			position: absolute;
+			&:first-child {
+				left:0;
+			}
+			&:nth-child(2) {
+				right:0;
+				top: 0;
+			}
+		}
+	}
+	&.two {
+		height: 198px;
+		.mission-block {
+			position: absolute;
+			&:first-child {
+				left:0;
+				top: 55px
+			}
+			&:nth-child(2) {
+				right:0;
+				top: 0;
+			}
+			&:nth-child(3) {
+				right:0;
+				bottom: 0;
+			}
+		}
+	}
+	&.three {
+		height: 307px;
+		/*background-color: red;*/
+		.mission-block {
+			position: absolute;
+			&:first-child {
+				left:0;
+				top: 109px
+			}
+			&:nth-child(2) {
+				right:0;
+				top: 0;
+			}
+			&:nth-child(3) {
+				right:0;
+				top: 109px;
+			}
+			&:nth-child(4) {
+				right:0;
+				bottom: 0;
+			}
+		}
+	}
+}
