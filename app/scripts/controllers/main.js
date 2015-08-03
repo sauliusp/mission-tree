@@ -9,6 +9,6 @@
  */
 angular.module('missionTreeApp')
   .controller('MainCtrl', ['$scope', function ($scope) {
-   	$scope.blocksInCol = _.range(10);
+   	$scope.blocksInCol = _.range(20);
    	$scope.colCount = _.range(5);
   }]);
